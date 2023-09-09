@@ -103,6 +103,13 @@ app.get('/:shortUrl', async (req, res, next) => {
     }
 });
 
+app.delete('/:shortUrl',(req,res)=>{
+    const shortUrl = req.params.shortUrl;
+    const url =  Url.findOneAndRemove({shortUrl})
+                 .then(()=>res.json({status:200,message:'url deleted'}))
+                 .catch(err=>res.json({status:500,message:err}));
+
+})
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is working on machine ${os.hostname()} in port ${process.env.PORT}`);
