@@ -12,7 +12,8 @@ config({
 
 const app = express();
 app.use(cors({
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    origin: "https://splendorous-churros-9005c0.netlify.app",
     // origin:"https://melodic-monstera-9fa78a.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
