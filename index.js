@@ -69,6 +69,15 @@ app.post('/', async (req, res, next) => {
     }
 });
 
+app.get('/all', async (req,res) =>{
+    const url = await Url.find();
+    res.json({
+        status:200,
+        url:url
+    })
+})
+
+
 app.get('/:shortUrl', async (req, res, next) => {
     try {
         const shortUrl = req.params.shortUrl;
@@ -88,6 +97,7 @@ app.get('/:shortUrl', async (req, res, next) => {
         next(err); // Pass the error to the error handling middleware
     }
 });
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is working on machine ${os.hostname()} in port ${process.env.PORT}`);
