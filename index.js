@@ -11,7 +11,12 @@ config({
 });
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: [process.env.FRONTEND_URL],
+    // origin:"https://melodic-monstera-9fa78a.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}));
 app.use(express.json());
 connectDB();
 
